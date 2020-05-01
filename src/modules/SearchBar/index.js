@@ -7,7 +7,6 @@ import {setWord} from '../../services/actions/wordActions';
 
 const SearchBar = ({data}) => {
   const classes = useStyles();
-  // const [value, setValue] = React.useState(null);
   const word = useSelector((state) => state.word);
   const dispatch = useDispatch();
   return (
@@ -17,7 +16,6 @@ const SearchBar = ({data}) => {
       getOptionLabel={(option) => option.word}
       value={word}
       onChange={(event, newValue) => {
-        // setValue(newValue);
         dispatch(setWord(newValue));
         console.log(newValue);
       }}

@@ -8,6 +8,7 @@ import {useStyles} from './styles';
 import {firestore} from '../../services/firebase';
 import {setWord} from '../../services/actions/wordActions';
 import {getAllWords} from '../../services/actions/thunks';
+import Button from '@material-ui/core/Button';
 
 const WordDisplay = () => {
   const classes = useStyles();
@@ -18,6 +19,8 @@ const WordDisplay = () => {
   const [editMode, setEditMode] = useState(false);
 
   const deleteWord = () => {
+    console.log(dictWord);
+
     firestore
       .collection('words')
       .doc(id)
@@ -36,6 +39,31 @@ const WordDisplay = () => {
     fetchData();
   };
 
+  const handleClick = () => {
+    firestore
+      .collection('words')
+      .doc(id)
+      .set(
+        {
+          word: word,
+          meaning: meaning,
+        },
+        {merge: true}
+      )
+      .then(function (docRef) {
+        console.log('Word edited with ID: ', docRef.id);
+      })
+      .catch(function (error) {
+        console.error('Error editing word: ', error);
+      });
+
+    const fetchData = async () => {
+      await dispatch(getAllWords);
+      await dispatch(setWord(dictWord));
+    };
+    fetchData();
+  };
+
   return word !== null ? (
     <div className={classes.root}>
       <div className={classes.wordOptions}>
@@ -46,7 +74,9 @@ const WordDisplay = () => {
             className={classes.input}
             name="editWord"
             value={word}
-            // onChange={(newValue) => setWord(newValue)}
+            onChange={(event) =>
+              dispatch(setWord({...dictWord, word: event.target.value}))
+            }
             label="Edit Word"
           />
         )}
@@ -68,10 +98,22 @@ const WordDisplay = () => {
           className={classes.input}
           name="editMeaning"
           value={meaning}
-          // onChange={(newValue) => setMeaning(newValue)}
+          onChange={(event) =>
+            dispatch(setWord({...dictWord, meaning: event.target.value}))
+          }
           label="Edit Meaning"
         />
       )}
+      {editMode === true ? (
+        <Button
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          onClick={handleClick}
+        >
+          Save
+        </Button>
+      ) : null}
     </div>
   ) : (
     <div className={classes.empty}>Search a word</div>

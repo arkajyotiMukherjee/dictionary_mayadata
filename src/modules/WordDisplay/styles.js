@@ -34,6 +34,10 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 16,
   },
   input: {
+    margin: 8,
     width: '100%',
+  },
+  button: {
+    margin: 8,
   },
 }));
