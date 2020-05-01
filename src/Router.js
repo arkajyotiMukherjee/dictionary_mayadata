@@ -6,14 +6,24 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import './App.scss';
 import {globalStyles} from './globalStyles';
 
-const NewsPage = lazy(() => import('./pages/NewsPage'));
-const HomePage = lazy(() => import('./pages/HomePage'));
+const LandingPage = lazy(() => import('./pages/LandingPage'));
+const SignInSignUpPage = lazy(() => import('./pages/SignInSignUpPage'));
+const AddWordPage = lazy(() => import('./pages/AddWordPage'));
 
 function Router(props) {
   return (
     <Switch>
-      <Route exact path="/" component={suspenseHoc(headerHoc(HomePage))} />
-      <Route exact path="/news" component={suspenseHoc(headerHoc(NewsPage))} />
+      <Route exact path="/" component={suspenseHoc(headerHoc(LandingPage))} />
+      <Route
+        exact
+        path="/signin"
+        component={suspenseHoc(headerHoc(SignInSignUpPage))}
+      />
+      <Route
+        exact
+        path="/add"
+        component={suspenseHoc(headerHoc(AddWordPage))}
+      />
     </Switch>
   );
 }

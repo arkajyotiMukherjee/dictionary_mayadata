@@ -8,7 +8,7 @@ export const styles = (theme) => ({
   },
   header: {
     width: '100%',
-    background: theme.palette.primary.main,
+    background: theme.palette.background.paper,
     boxShadow: theme.palette.shadows.header,
     color: theme.palette.text.primary,
     display: 'flex',
@@ -28,7 +28,10 @@ export const styles = (theme) => ({
   theme: {
     color: theme.palette.secondary.buttonTheme,
   },
-  phone: {
+  signin: {
     color: theme.palette.secondary.main,
+  },
+  add: {
+    color: theme.palette.primary.main,
   },
 });

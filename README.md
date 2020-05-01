@@ -1,6 +1,6 @@
-# [COVID-19 Analytics India](https://covidanalytics.live) &middot; ![version](https://img.shields.io/github/v/release/Cryptonex7/covid19-react-project) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+# [Dictionary Maydata](https://covidanalytics.live) &middot; ![version](https://img.shields.io/github/v/release/Cryptonex7/covid19-react-project) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-Realtime COVID-19 Analytics!
+Dictionary Application for Mayadata!
 
 ## Setup
 

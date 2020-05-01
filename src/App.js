@@ -8,7 +8,7 @@ function App(props) {
   const lightTheme = createMuiTheme({
     palette: {
       type: 'light',
-      primary: {main: '#FFFFFF'},
+      primary: {main: '#0156FF'},
       secondary: {main: '#17E820', buttonTheme: '#FFE600'},
       background: {
         default: '#e4e7ee',
@@ -41,7 +41,7 @@ function App(props) {
   const darkTheme = createMuiTheme({
     palette: {
       type: 'dark',
-      primary: {main: '#323232'},
+      primary: {main: '#0156FF'},
       secondary: {main: '#17E820', buttonTheme: '#0185FF'},
       background: {
         default: '#121212',

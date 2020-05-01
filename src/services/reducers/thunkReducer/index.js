@@ -1,43 +1,21 @@
 import * as actions from '../../actionTypes';
 
-const graphState = {
-  graphData: {},
-  graphDataPending: false,
-  graphDataError: {},
+const wordState = {
+  words: [],
 };
 
-const graphReducer = (state = graphState, action) => {
+const wordReducer = (state = wordState, action) => {
   switch (action.type) {
-    case actions.GET_GRAPH_DATA_CONFIRMED_PENDING:
-      return Object.assign({}, state, {graphDataPending: true});
-    case actions.GET_GRAPH_DATA_CONFIRMED_SUCCESS:
-      return Object.assign({}, state, {
-        graphDataPending: false,
-        graphData: {
-          ...state.graphData,
-          day_wise_confirmed: action.payload,
-        },
-      });
-    case actions.GET_GRAPH_DATA_CONFIRMED_FAILED:
-      return Object.assign({}, state, {
-        graphDataPending: false,
-        graphDataError: action.payload,
-      });
-    case actions.GET_GRAPH_DATA_ALL_PENDING:
-      return Object.assign({}, state, {graphDataPending: true});
-    case actions.GET_GRAPH_DATA_ALL_SUCCESS:
-      return Object.assign({}, state, {
-        graphDataPending: false,
-        graphData: action.payload,
-      });
-    case actions.GET_GRAPH_DATA_ALL_FAILED:
-      return Object.assign({}, state, {
-        graphDataPending: false,
-        graphDataError: action.payload,
-      });
+    case actions.GET_ALL_WORDS:
+      return {
+        ...state,
+        words: action.payload,
+      };
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 };
 
-export default graphReducer;
+export default wordReducer;
