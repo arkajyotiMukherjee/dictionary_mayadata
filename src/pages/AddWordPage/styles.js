@@ -20,4 +20,10 @@ export const styles = (theme) => ({
     justifyContent: 'center',
     marginBottom: 32,
   },
+  nonAdmin: {
+    color: theme.palette.text.primary,
+    margin: '0 auto',
+    maxWidth: '60%',
+    textAlign: 'center',
+  },
 });

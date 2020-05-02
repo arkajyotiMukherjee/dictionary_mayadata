@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {useSelector} from 'react-redux';
 import {firestore} from '../../services/firebase';
 import withStyles from '@material-ui/core/styles/withStyles';
 import {styles} from './styles';
@@ -9,6 +10,7 @@ const AddWordPage = (props) => {
   const {classes} = props;
   const [word, setWord] = useState();
   const [meaning, setMeaning] = useState();
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +29,7 @@ const AddWordPage = (props) => {
       });
   };
 
-  return (
+  return currentUser !== null && currentUser.admin === true ? (
     <div className={classes.root}>
       <h2>Add a Word</h2>
       <form onSubmit={handleSubmit}>
@@ -57,6 +59,10 @@ const AddWordPage = (props) => {
         </div>
       </form>
     </div>
+  ) : (
+    <h2 className={classes.nonAdmin}>
+      You need to be an Admin to Add, Edit or Delete words
+    </h2>
   );
 };
 

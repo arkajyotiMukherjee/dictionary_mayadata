@@ -12,7 +12,7 @@ import {withRouter} from 'react-router-dom';
 
 import {styles} from './styles';
 import {toggleTheme} from '../../services/actions';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 import {withTranslation} from 'react-i18next';
 
 const headerHoc = (WrapComponent) => {

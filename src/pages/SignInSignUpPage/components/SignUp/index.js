@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import {auth, createUserProfileDocument} from '../../../../services/firebase';
@@ -15,13 +17,14 @@ class SignUp extends Component {
       email: '',
       password: '',
       confirmPassword: '',
+      admin: false,
     };
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
 
-    const {displayName, email, password, confirmPassword} = this.state;
+    const {displayName, email, password, confirmPassword, admin} = this.state;
     console.log(displayName);
 
     if (password !== confirmPassword) {
@@ -30,13 +33,14 @@ class SignUp extends Component {
     }
     try {
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      await createUserProfileDocument(user, {displayName});
+      await createUserProfileDocument(user, {displayName, admin});
 
       this.setState({
         displayName: '',
         email: '',
         password: '',
         confirmPassword: '',
+        admin: false,
       });
       this.props.history.push('/');
     } catch (error) {
@@ -49,8 +53,14 @@ class SignUp extends Component {
 
     this.setState({[name]: value});
   };
+
+  handleCheckedChange = (event) => {
+    this.setState({admin: event.target.checked});
+    console.log(event.target.checked);
+  };
+
   render() {
-    const {displayName, email, password, confirmPassword} = this.state;
+    const {displayName, email, password, confirmPassword, admin} = this.state;
     const {classes} = this.props;
     return (
       <div className={classes.root}>
@@ -96,6 +106,17 @@ class SignUp extends Component {
             label="Confirm Password"
             variant="outlined"
             required
+          />
+          <FormControlLabel
+            className={classes.checkAdmin}
+            control={
+              <Checkbox
+                checked={admin}
+                onChange={this.handleCheckedChange}
+                inputProps={{'aria-label': 'primary checkbox'}}
+              />
+            }
+            label="Sign up as Admin"
           />
           <div className={classes.button}>
             <Button variant="outlined" type="submit" color="primary">

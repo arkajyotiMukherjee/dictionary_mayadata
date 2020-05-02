@@ -4,6 +4,7 @@ import themeReducer from './themeReducer';
 import wordReducer from './wordReducer';
 import thunkReducer from './thunkReducer';
 import miscReducer from './miscReducer';
+import userReducer from './userReducer';
 
 export default (history) =>
   combineReducers({
@@ -12,4 +13,5 @@ export default (history) =>
     thunk: thunkReducer,
     theme: themeReducer,
     word: wordReducer,
+    user: userReducer,
   });

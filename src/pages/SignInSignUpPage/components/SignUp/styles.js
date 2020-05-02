@@ -20,4 +20,7 @@ export const styles = (theme) => ({
     justifyContent: 'center',
     marginBottom: 32,
   },
+  checkAdmin: {
+    marginLeft: 0,
+  },
 });

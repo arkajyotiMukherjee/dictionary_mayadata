@@ -18,9 +18,8 @@ export const styles = (theme) => ({
     overflow: 'hidden',
   },
   logo: {
-    marginRight: theme.spacing(2),
-    width: 50,
-    marginLeft: 8,
+    height: 40,
+    margin: 8,
   },
   langToggle: {
     flexGrow: 1,

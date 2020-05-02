@@ -14,6 +14,10 @@ const WordDisplay = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const dictWord = useSelector((state) => state.word);
+
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  console.log(currentUser);
   const {id, word, meaning} = dictWord;
 
   const [editMode, setEditMode] = useState(false);
@@ -80,16 +84,24 @@ const WordDisplay = () => {
             label="Edit Word"
           />
         )}
-        <IconButton
-          className={classes.edit}
-          edge="end"
-          onClick={() => setEditMode(!editMode)}
-        >
-          <Edit />
-        </IconButton>
-        <IconButton className={classes.delete} edge="end" onClick={deleteWord}>
-          <Delete />
-        </IconButton>
+        {currentUser !== null && currentUser.admin === true ? (
+          <>
+            <IconButton
+              className={classes.edit}
+              edge="end"
+              onClick={() => setEditMode(!editMode)}
+            >
+              <Edit />
+            </IconButton>
+            <IconButton
+              className={classes.delete}
+              edge="end"
+              onClick={deleteWord}
+            >
+              <Delete />
+            </IconButton>
+          </>
+        ) : null}
       </div>
       {editMode === false ? (
         <div className={classes.meaning}>{meaning}</div>
