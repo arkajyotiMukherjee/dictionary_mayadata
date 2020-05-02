@@ -17,9 +17,13 @@ export const styles = (theme) => ({
     width: '100%',
   },
   button: {
+    margin: '0 auto',
     display: 'flex',
     justifyContent: 'center',
     marginBottom: 32,
+    '& button': {
+      width: '40%',
+    },
   },
   checkAdmin: {
     marginLeft: 0,

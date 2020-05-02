@@ -15,12 +15,21 @@ export const styles = (theme) => ({
     width: '100%',
   },
   buttons: {
+    width: '40%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    margin: '0 auto',
+    '& button': {
+      margin: '8px 0',
+    },
     [theme.breakpoints.up('md')]: {
+      width: '100%',
       flexDirection: 'row',
-      justifyContent: 'space-around',
+      justifyContent: 'center',
+      '& button': {
+        margin: '0 16px',
+      },
     },
   },
 });
