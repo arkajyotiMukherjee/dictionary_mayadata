@@ -5,9 +5,10 @@ export const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: 32,
     color: theme.palette.text.primary,
     [theme.breakpoints.up('md')]: {
+      marginTop: 0,
       width: '40%',
     },
   },

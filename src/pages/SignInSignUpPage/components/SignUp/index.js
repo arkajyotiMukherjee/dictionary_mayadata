@@ -64,7 +64,7 @@ class SignUp extends Component {
     const {classes} = this.props;
     return (
       <div className={classes.root}>
-        <div className="title">I do not have an account</div>
+        <h2>I do not have an account</h2>
         <span>Sign up with your email and password</span>
         <form onSubmit={this.handleSubmit}>
           <TextField
