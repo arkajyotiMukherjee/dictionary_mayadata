@@ -27,6 +27,8 @@ const AddWordPage = (props) => {
       .catch(function (error) {
         console.error('Error adding word: ', error);
       });
+    setWord('');
+    setMeaning('');
   };
 
   return currentUser !== null && currentUser.admin === true ? (
